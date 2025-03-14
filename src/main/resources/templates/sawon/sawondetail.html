@@ -19,11 +19,15 @@
        		border: 2px solid gray;
        		margin-bottom: 20px;
        }
+       
+       html{
+       	scroll-behavior:smooth;
+       }
      
 </style>
 </head>
 <body>
-<div layout:fragment="content" style="margin: 20px;">
+<div layout:fragment="content" style="margin: 20px;overflow: scroll;">
 	<th:block th:if="${dto.photo!=null}">
 		<img th:src="|${imagePath}${dto.photo}|" 
 			class="largephoto">
