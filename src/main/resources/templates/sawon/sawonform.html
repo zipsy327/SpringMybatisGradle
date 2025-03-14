@@ -13,12 +13,94 @@
        body *{
            font-family: 'Jua';
        }
+       
+       .addform tbody th{
+       		background-color: #eee8aa
+       }
 </style>
 </head>
 <body>
-<div layout:fragment="content">
-	<h4 class="alert alert-info">사원폼</h4>
+<div layout:fragment="content" style="margin: 20px;">
+	<form action="./insert" method="post" enctype="multipart/form-data">
+		<table class="table table-bordered addform">
+			<caption align="top"><b>사원추가</b></caption>
+			<tbody>
+				<tr>
+					<th width="100">사원명</th>
+					<td>
+						<input type="text" name="sawonname" class="form-control"
+						autofocus="autofocus" required="required">
+					</td>
+				</tr>
+				<tr>
+					<th width="100">핸드폰</th>
+					<td>
+						<input type="text" name="hp" class="form-control"
+						required="required">
+					</td>
+				</tr>
+				<tr>
+					<th width="100">사진</th>
+					<td>
+						<input type="file" name="upload" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th width="100">부서</th>
+					<td>
+						<select name="buseo"  class="form-select">
+							<option>교육부</option>
+							<option>인사부</option>
+							<option>홍보부</option>
+							<option>관리부</option>							
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th width="100">성별</th>
+					<td>
+						<label>
+							<input type="radio" name="gender" value="남자" checked="checked">남자
+						</label>
+						<label>
+							<input type="radio" name="gender" value="여자">여자
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<th width="100">입사일</th>
+					<td>
+						<input type="date" name="ipsaday" class="form-control" value="2025-01-01">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button type="submit" class="btn btn-success">사원등록</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
 </div>
 </body>
 </html>      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

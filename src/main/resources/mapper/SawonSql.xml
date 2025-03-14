@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.SawonMapper">
+	<insert id="insertSawon" parameterType="SawonDto">
+		insert into sawondb (sawonname,photo,gender,hp,buseo,ipsaday,writeday) values (
+		 #{sawonname},#{photo},#{gender},#{hp},#{buseo},#{ipsaday},now())
+	</insert>
+	<select id="getSelectAllSawon" resultType="SawonDto">
+		select * from sawondb order by num asc
+	</select>
+	<select id="getSawon" parameterType="int" resultType="SawonDto">
+		select * from sawondb where num=#{num}
+	</select>
+	<delete id="deleteSawon" parameterType="int">
+		delete from sawondb where num=#{num}
+	</delete>
+	<update id="updateSawon" parameterType="SawonDto">
+		update sawondb set sawonname=#{sawonname},gender=#{gender},
+		hp=#{hp},buseo=#{buseo},ipsaday=#{ipsaday}
+		<if test="photo!=null">
+			,photo=#{photo}
+		</if>
+		where num=#{num}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

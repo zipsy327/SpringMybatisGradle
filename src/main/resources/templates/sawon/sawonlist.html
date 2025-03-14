@@ -13,13 +13,83 @@
        body *{
            font-family: 'Jua';
        }
+       
+       ul.sawonlist{
+       		list-style: none;
+       }
+       
+       .day{
+	       	float: right;
+	       	color: gray;
+	       	font-size: 13px;
+       }
+       
+       .photo{
+	       	width: 30px;
+	       	height: 30px;
+	       	border: 1px solid black;
+	       	margin-right: 10px;
+	       	margin-bottom: 10px;
+       }
+       
+       ul.sawonlist  a{
+       		text-decoration: none;
+       		cursor: pointer;
+       		color:black;
+       }
+       
+       ul.sawonlist li:hover{
+       		background-color: #ddd;
+       }
 </style>
 </head>
 <body>
-<div layout:fragment="content">
-	<h3 class="alert alert-danger">[사원 명단]</h3>
-	
+<div layout:fragment="content" style="margin-top: 20px;">
+	<h3>[사원 명단]</h3>
+	<ul class="sawonlist">
+		<th:block th:if="${totalCount==0}">
+			<li>
+				<h4>등록된 사원이 없습니다</h4>
+			</li>
+		</th:block>
+		<th:block th:if="${totalCount>0}">
+			<li th:each="dto:${list}">
+			  <a>
+				   <th:block th:if="${dto.photo!=null}">
+					<img th:src="|${imagePath}${dto.photo}?type=f&w=30&h=30&faceopt=true&ttype=jpg|" 
+						class="photo">
+				   </th:block>
+				   
+				   <th:block th:if="${dto.photo==null}">
+					<img th:src="|${imagePath}noimage.png?type=f&w=30&h=30&faceopt=true&ttype=jpg|" 
+						class="photo">
+				   </th:block>
+				   <span>[[${dto.sawonname}]]</span>
+				   <span style="color:gray;">([[${dto.buseo}]])</span>
+				   <span class="day">
+				   	[[${#calendars.format(dto.writeday,'yyyy-MM-dd')}]]
+				   </span>
+			   </a>
+			</li>
+		</th:block>
+	</ul>
 </div>
 </body>
 </html>      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
