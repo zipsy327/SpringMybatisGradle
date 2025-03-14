@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layoutMain}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>502 thymeleaf study</title>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+     
+   <style>
+       body *{
+           font-family: 'Jua';
+       }
+       
+       img.largephoto{
+       		max-width: 80%;
+       		border: 2px solid gray;
+       		margin-bottom: 20px;
+       }
+     
+</style>
+</head>
+<body>
+<div layout:fragment="content" style="margin: 20px;">
+	<th:block th:if="${dto.photo!=null}">
+		<img th:src="|${imagePath}${dto.photo}|" 
+			class="largephoto">
+	</th:block>
+	<th:block th:if="${dto.photo==null}">
+		<h3 style="color:red;">사진 미등록</h3>
+	</th:block>
+	<h6>사원명 : [[${dto.sawonname}]]([[${dto.gender}]])</h6>
+	<h6>부서명 : [[${dto.buseo}]]</h6>
+	<h6>핸드폰 : [[${dto.hp}]]</h6>
+	<h6>입사일 : [[${dto.ipsaday}]]</h6>
+	<h6>
+		등록일 : [[${#calendars.format(dto.writeday,'yyyy-MM-dd HH:mm')}]]
+	</h6>
+	 
+	<button type="button" class="btn btn-sm btn-info"
+	 style="margin-left: 100px;"
+	th:onclick="|location.href='@{./updateform(num=${dto.num})}'|">사원정보수정</button>
+</div>
+</body>
+</html>      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

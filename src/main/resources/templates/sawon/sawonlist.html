@@ -67,10 +67,16 @@
 				   </th:block>
 				   <span>[[${dto.sawonname}]]</span>
 				   <span style="color:gray;">([[${dto.buseo}]])</span>
-				   <span class="day">
-				   	[[${#calendars.format(dto.writeday,'yyyy-MM-dd')}]]
-				   </span>
-			   </a>
+				</a>
+			   <span style="margin-left: 20px;color: gray;cursor: pointer;">
+			       <a th:href=@{./delete(num=${dto.num})}>
+			   		<i class="bi bi-x-lg"></i>
+			   	   </a>
+			   </span>
+			   <span class="day">
+			   	[[${#calendars.format(dto.writeday,'yyyy-MM-dd')}]]
+			   </span>
+			   
 			</li>
 		</th:block>
 	</ul>

@@ -62,6 +62,37 @@ public class SawonController {
 		sawonService.insertSawon(dto);
 		return "redirect:./list";
 	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("num") int num)
+	{
+		//저장된 사진 지우기
+		String photo=sawonService.getSawon(num).getPhoto();
+		storageService.deleteFile(bucketName, "sawon", photo);
+		
+		//db 데이타 삭제
+		sawonService.deleteSawon(num);
+		
+		return "redirect:./list";
+	}
+	
+	@GetMapping("/detail")
+	public String detail(@RequestParam("num") int num,Model model)
+	{
+		SawonDto dto=sawonService.getSawon(num);
+		model.addAttribute("dto", dto);
+		model.addAttribute("imagePath", imagePath);
+		return "sawon/sawondetail";
+	}
+	
+	@GetMapping("/updateform")
+	public String updateForm(@RequestParam("num") int num,Model model)
+	{
+		SawonDto dto=sawonService.getSawon(num);
+		model.addAttribute("dto", dto);
+		model.addAttribute("imagePath", imagePath);
+		return "sawon/updateform";
+	}
 }
 
 
