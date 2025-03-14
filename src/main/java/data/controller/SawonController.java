@@ -93,6 +93,21 @@ public class SawonController {
 		model.addAttribute("imagePath", imagePath);
 		return "sawon/updateform";
 	}
+	
+	@PostMapping("/update")
+	public String sawonUpdate(@ModelAttribute SawonDto dto,
+			@RequestParam("upload") MultipartFile upload)
+	{
+		if(upload.getOriginalFilename().equals(""))
+			dto.setPhoto(null);
+		else {
+			String photo=storageService.uploadFile(bucketName, "sawon", upload);
+			dto.setPhoto(photo);
+		}
+		
+		sawonService.updateSawon(dto);
+		return "redirect:./detail?num="+dto.getNum();
+	}
 }
 
 
