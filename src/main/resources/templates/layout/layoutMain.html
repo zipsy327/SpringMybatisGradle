@@ -5,10 +5,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>502 thymeleaf study</title>
+<style type="text/css">
+	 
+       .content {
+			width : 100%;
+			height : 100%;
+			margin : 0;
+			padding : 0;
+			border : none;
+
+			/* [모바일 스크롤 시 부드럽게 처리] */
+			overflow:scroll-y; 
+			-webkit-overflow-scrolling:touch;					
+		}
+		/* [body 스크롤바 메인 스타일 지정] */
+		.content::-webkit-scrollbar {			
+			width: 0px;					
+			background-color: #c1c1c1;
+		}
+		/* [body 스크롤바 thumb 스타일 지정] */
+		.content::-webkit-scrollbar-thumb {					
+			background-color: #444444;
+		}
+     
+</style>
 </head>
 <body>
   <header th:replace="~{layout/header::headerFragment}"></header>
-  <div layout:fragment="content"></div>
+  <div layout:fragment="content" class="content"></div>
   <footer th:replace="~{layout/footer::footerFragment}"></footer>
 </body>
 </html>      
